@@ -1,8 +1,9 @@
 #include "user.h"
+#include "bankAccount.h"
 
 user::user(string pcu){
     personalCodeUser=pcu;
-    personalWallet=0;
+    personalWallet=100;
 }
 
 string user::getPersonalCodeUser(){

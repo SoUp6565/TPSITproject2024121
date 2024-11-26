@@ -18,7 +18,7 @@ public:
     int getDuration();
     int getLimit();
     void setLimit();
-    double payment();//m
+    double payment();
     bool getIsFinish();
     void setIsFinish();
     ~investment(){};

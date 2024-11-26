@@ -18,9 +18,9 @@ using namespace std;
         bool checkForInvestmentList;
     public:
         bankAccount(string pC);
-        void createInvesmentList(investment i);//m
+        void createInvesmentList(investment i);
         string getPersonalCodeBank();
-        void setPersonalBalance(double b);
+        void setPersonalBalance(double z);
         vector<investment> getInvestmentList();
         double getPersonalBalance();
         void setCheckForInvestmentList();

@@ -16,10 +16,10 @@ using namespace std;
         int day;
     public:
         bank();
-        void createAccountList(bankAccount o); //m
+        void createAccountList(bankAccount o);
         bool checkPersonalCode(user u);
         vector<bankAccount> getAccountList();
-        void timeTravel(user u); //m
+        void timeTravel(user u);
         ~bank(){};
     };
     

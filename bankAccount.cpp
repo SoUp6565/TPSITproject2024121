@@ -10,8 +10,8 @@ string bankAccount::getPersonalCodeBank(){
     return personalCodeBank;
 }
 
-void bankAccount::setPersonalBalance(double b){
-    personalBalance+=b;
+void bankAccount::setPersonalBalance(double z){
+    personalBalance=personalBalance+z;
 }
 
 double bankAccount::getPersonalBalance(){
