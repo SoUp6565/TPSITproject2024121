@@ -19,7 +19,7 @@ bool bank::checkPersonalCode(user u){
     return false;
 }
 
-vector<bankAccount> bank::getAccountList(){
+vector<bankAccount>& bank::getAccountList(){
     return accountList;
 }
 

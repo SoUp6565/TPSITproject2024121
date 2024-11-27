@@ -10,7 +10,7 @@ string user::getPersonalCodeUser(){
     return personalCodeUser;
 }
 
-void user::deposit(bank b){
+void user::deposit(bank& b){
     if (b.checkPersonalCode(*this))
     {
         cout<<"your wallet: "<<personalWallet<<endl;
@@ -33,7 +33,7 @@ void user::deposit(bank b){
     }
 }
 
-void user::withdraw(bank b){
+void user::withdraw(bank& b){
     if (b.checkPersonalCode(*this))
     {
         cout<<"how much money do you want to withdraw?"<<endl;

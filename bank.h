@@ -18,7 +18,7 @@ using namespace std;
         bank();
         void createAccountList(bankAccount o);
         bool checkPersonalCode(user u);
-        vector<bankAccount> getAccountList();
+        vector<bankAccount>& getAccountList();
         void timeTravel(user u);
         ~bank(){};
     };

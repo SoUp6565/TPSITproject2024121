@@ -3,7 +3,6 @@
 #include "investment.cpp"
 #include "bankAccount.cpp"
 
-//il deposit fotte i soldi
 int main(){
 
     bank SanPaolo;

@@ -15,8 +15,8 @@
     public:
         user(string pcu);
         string getPersonalCodeUser();
-        void deposit(bank b);
-        void withdraw(bank b);
+        void deposit(bank& b);
+        void withdraw(bank& b);
         void lookWallet();
         void setPersonalWallet(double);
         void lookPersonalBalance(bank b);
