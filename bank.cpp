@@ -1,17 +1,20 @@
 #include "bank.h"
 
-bank::bank(){
-    day=0;
+bank::bank()
+{
+    day = 0;
 }
 
-void bank::createAccountList(bankAccount o){
+void bank::createAccountList(bankAccount o)
+{
     accountList.push_back(o);
 }
 
-bool bank::checkPersonalCode(user u){
+bool bank::checkPersonalCode(user u)
+{
     for (int i = 0; i < accountList.size(); i++)
     {
-        if (accountList.at(i).getPersonalCodeBank()==u.getPersonalCodeUser())
+        if (accountList.at(i).getPersonalCodeBank() == u.getPersonalCodeUser())
         {
             return true;
         }
@@ -19,16 +22,18 @@ bool bank::checkPersonalCode(user u){
     return false;
 }
 
-vector<bankAccount>& bank::getAccountList(){
+vector<bankAccount> &bank::getAccountList()
+{
     return accountList;
 }
 
-void bank::timeTravel(user& u){
-    cout<<"day: "<<day;
-    cout<<"do you want to do a timetravel(y o n). Every timetravel is 30 days long"<<endl;
+void bank::timeTravel(user &u)
+{
+    cout << "day: " << day << endl;
+    cout << "do you want to do a timetravel(y o n). Every timetravel is 30 days long" << endl;
     char answer;
-    cin>>answer;
-    while (answer=='y')
+    cin >> answer;
+    while (answer == 'y')
     {
         if (this->checkPersonalCode(u))
         {
@@ -37,7 +42,7 @@ void bank::timeTravel(user& u){
             {
                 for (int c = 0; c < accountList.at(i).getInvestmentList().size(); c++)
                 {
-                    if (accountList.at(i).getInvestmentList().at(c).getLimit()==0 && accountList.at(i).getInvestmentList().at(c).getIsFinish()==true)
+                    if (accountList.at(i).getInvestmentList().at(c).getLimit() == 0 && accountList.at(i).getInvestmentList().at(c).getIsFinish() == true)
                     {
                         accountList.at(i).setPersonalBalance(accountList.at(i).getInvestmentList().at(c).payment());
                         accountList.at(i).getInvestmentList().at(c).setIsFinish();
@@ -46,11 +51,9 @@ void bank::timeTravel(user& u){
                 }
             }
         }
-        day+=30;
-        cout<<"day: "<<day;
-        cout<<"do you want to do another timetravel(y o n)"<<endl;
-        cin>>answer;
+        day += 30;
+        cout << "day: " << day;
+        cout << "do you want to do another timetravel(y o n)" << endl;
+        cin >> answer;
     }
-    
-    
 }

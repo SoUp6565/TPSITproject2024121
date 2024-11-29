@@ -3,7 +3,8 @@
 #include "investment.cpp"
 #include "bankAccount.cpp"
 
-int main(){
+int main()
+{
 
     bank SanPaolo;
     bankAccount s1("001");
@@ -21,219 +22,265 @@ int main(){
     Generali.createAccountList(g2);
     Generali.createAccountList(g3);
 
-    cout<<"ciao, ti aiutero' a gestire il tuo account."<<endl;
-    cout<<"in quale banca vuoi operarare?(San Paolo = 0 | Generali = 1)"<<endl;
+    cout << "hi, i will help you with your bank account." << endl;
+    cout << "which bank do you want use?(San Paolo = 0 | Generali = 1)" << endl;
     int checkBank;
-    cin>>checkBank;
-    if (checkBank==1 || checkBank==0)
+    cin >> checkBank;
+    if (checkBank == 1 || checkBank == 0)
     {
-        if (checkBank==0)
+        if (checkBank == 0)
         {
-            //san
-            cout<<"inserisci il tuo codice per l' accesso alla banca"<<endl;
+            // san
+            cout << "insert your personal code bank" << endl;
             string code;
-            cin>>code; // 001/002/003
+            cin >> code; // 001/002/003
             user u1(code);
             if (SanPaolo.checkPersonalCode(u1))
             {
-                cout<<"perfetto, l' operazione il tuo account e' stato trovato"<<endl;
-                cout<<"ecco una lista delle possibili operzioni"<<endl;
-                cout<<"- deposito (codice 0)"<<endl;
-                cout<<"- prelievo (codice 1)"<<endl;
-                cout<<"- guardare il tuo portafoglio (codice 2)"<<endl;
-                cout<<"- guardare il tuo conto in banca (codice 3)"<<endl;
-                cout<<"- fare un viaggio nel tempo (codice 4)"<<endl;
-                cout<<"- creare un investimento (codice 5)"<<endl;
-                cout<<"vuoi eseguire uan di queste?(y/n)"<<endl;
+                cout << "perfect, account found" << endl;
+                cout << "now you can do these operations" << endl;
+                cout << "- deposit (code 0)" << endl;
+                cout << "- withdraw (code 1)" << endl;
+                cout << "- look wallet (code 2)" << endl;
+                cout << "- look your personal balance (code 3)" << endl;
+                cout << "- do a time-travel (code 4)" << endl;
+                cout << "- create an investment (codice 5)" << endl;
+                cout << "- look your investment list (code 6)" << endl;
+                cout << "do you want execute one of them?(y/n)" << endl;
                 char answ;
-                cin>>answ;
-                if (answ=='y')
+                cin >> answ;
+                if (answ == 'y')
                 {
-                    while (answ=='y')
+                    while (answ == 'y')
                     {
-                        cout<<"quale di queste vuoi eseguire?"<<endl;
+                        cout << "which one?" << endl;
                         int ans1;
-                        cin>>ans1;
+                        cin >> ans1;
                         switch (ans1)
                         {
                         case 0:
                             u1.deposit(SanPaolo);
+                            cout << "************************************" << endl;
                             break;
                         case 1:
                             u1.withdraw(SanPaolo);
+                            cout << "************************************" << endl;
                             break;
                         case 2:
                             u1.lookWallet();
+                            cout << "************************************" << endl;
                             break;
                         case 3:
                             u1.lookPersonalBalance(SanPaolo);
+                            cout << "************************************" << endl;
                             break;
                         case 4:
                             SanPaolo.timeTravel(u1);
+                            cout << "************************************" << endl;
                             break;
                         case 5:
-                            cout<<"quanto vuoi investire"<<endl;
+                            cout << "how much do you want invest" << endl;
                             double qinvest;
-                            cin>>qinvest;
-                            cout<<"quanto vuoi che sia la durata (breve=0, media=1, lunga=2)"<<endl;
+                            cin >> qinvest;
+                            cout << "duration? (short=0, mid=1, long=2)" << endl;
                             int dur;
-                            cin>>dur;
-                            if (dur==0 || dur==1 || dur==2)
+                            cin >> dur;
+                            if (dur == 0 || dur == 1 || dur == 2)
                             {
-                                cout<<"quanto vuoi che sia il rischio (basso=0, medio=1, alto=2)"<<endl;
+                                cout << "risk (low=0, mid=1, high=2)" << endl;
                                 int ris;
-                                cin>>ris;
-                                if (ris==0 || ris==1 || ris==2)
+                                cin >> ris;
+                                if (ris == 0 || ris == 1 || ris == 2)
                                 {
                                     for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
                                     {
-                                        if (SanPaolo.getAccountList().at(i).getPersonalCodeBank()==u1.getPersonalCodeUser())
+                                        if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                         {
-                                            investment invest(qinvest,dur,ris);
+                                            investment invest(qinvest, dur, ris);
                                             SanPaolo.getAccountList().at(i).createInvesmentList(invest);
                                         }
                                     }
-                                }else{
-                                    cout<<"rischio errata "<<endl;
+                                }
+                                else
+                                {
+                                    cout << "wrong typer of risk " << endl;
                                     return 0;
                                 }
-                            }else{
-                                cout<<"duruta errata "<<endl;
+                            }
+                            else
+                            {
+                                cout << "wrong type of duration " << endl;
                                 return 0;
                             }
+                            cout << "************************************" << endl;
+                            break;
+                        case 6:
+                            cout << "investment status:" << endl;
+                            for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
+                            {
+                                if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
+                                {
+                                    SanPaolo.getAccountList().at(i).printInvestmentStatus();
+                                }
+                            }
+                            cout << "************************************" << endl;
                             break;
                         default:
                             break;
                         }
-                        cout<<"vuoi eseguire un' altra operazione?"<<endl;
-                        cout<<"ecco una lista delle possibili operzioni"<<endl;
-                        cout<<"- deposito (codice 0)"<<endl;
-                        cout<<"- prelievo (codice 1)"<<endl;
-                        cout<<"- guardare il tuo portafoglio (codice 2)"<<endl;
-                        cout<<"- guardare il tuo conto in banca (codice 3)"<<endl;
-                        cout<<"- fare un viaggio nel tempo (codice 4)"<<endl;
-                        cout<<"- creare un investimento (codice 5)"<<endl;
-                        cout<<"(y/n)"<<endl;
-                        cin>>answ;
+                        cout << "now you can do these operations" << endl;
+                        cout << "- deposit (code 0)" << endl;
+                        cout << "- withdraw (code 1)" << endl;
+                        cout << "- look wallet (code 2)" << endl;
+                        cout << "- look your personal balance (code 3)" << endl;
+                        cout << "- do a time-travel (code 4)" << endl;
+                        cout << "- create an investment (codice 5)" << endl;
+                        cout << "- look your investment list (code 6)" << endl;
+                        cout << "do you want execute another operation?(y/n)" << endl;
+                        cin >> answ;
                     }
-                }else{
-                    cout<<"ci sono stati problemi"<<endl;
+                }
+                else
+                {
+                    cout << "problems" << endl;
                     return 0;
                 }
-            }else{
-                cout<<"in questa banca non e' presente questo account"<<endl;
+            }
+            else
+            {
+                cout << "thsere is not this account on this bank" << endl;
                 return 0;
             }
-            
-        }else{
-            //gen
-            cout<<"inserisci il tuo codice per l' accesso alla banca"<<endl;
+        }
+        else
+        {
+            // gen
+            cout << "insert your personal code bank" << endl;
             string code;
-            cin>>code;
+            cin >> code;
             user u1(code);
             if (Generali.checkPersonalCode(u1))
             {
-                cout<<"perfetto, l' operazione il tuo account e' stato trovato"<<endl;
-                cout<<"ecco una lista delle possibili operzioni";
-                cout<<"- deposito (codice 0)"<<endl;
-                cout<<"- prelievo (codice 1)"<<endl;
-                cout<<"- guardare il tuo portafoglio (codice 2)"<<endl;
-                cout<<"- guardare il tuo conto in banca (codice 3)"<<endl;
-                cout<<"- fare un viaggio nel tempo (codice 4)"<<endl;
-                cout<<"- creare un investimento (codice 5)"<<endl;
-                cout<<"vuoi eseguire uan di queste?(y/n)"<<endl;
+                cout << "perfect, account found" << endl;
+                cout << "now you can do these operations" << endl;
+                cout << "- deposit (code 0)" << endl;
+                cout << "- withdraw (code 1)" << endl;
+                cout << "- look wallet (code 2)" << endl;
+                cout << "- look your personal balance (code 3)" << endl;
+                cout << "- do a time-travel (code 4)" << endl;
+                cout << "- create an investment (codice 5)" << endl;
+                cout << "- look your investment list (code 6)" << endl;
+                cout << "do you want execute one of them?(y/n)" << endl;
                 char answ;
-                cin>>answ;
-                if (answ=='y')
+                cin >> answ;
+                if (answ == 'y')
                 {
-                    while (answ=='y')
+                    while (answ == 'y')
                     {
-                        cout<<"quale di queste vuoi eseguire?"<<endl;
+                        cout << "which one?" << endl;
                         int ans1;
-                        cin>>ans1;
+                        cin >> ans1;
                         switch (ans1)
                         {
                         case 0:
                             u1.deposit(Generali);
+                            cout << "************************************" << endl;
                             break;
                         case 1:
                             u1.withdraw(Generali);
+                            cout << "************************************" << endl;
                             break;
                         case 2:
                             u1.lookWallet();
+                            cout << "************************************" << endl;
                             break;
                         case 3:
                             u1.lookPersonalBalance(Generali);
+                            cout << "************************************" << endl;
                             break;
                         case 4:
                             SanPaolo.timeTravel(u1);
+                            cout << "************************************" << endl;
                             break;
                         case 5:
-                            cout<<"quanto vuoi investire"<<endl;
+                            cout << "how much do you want invest" << endl;
                             double qinvest;
-                            cin>>qinvest;
-                            cout<<"quanto vuoi che sia la durata (breve=0, media=1, lunga=2)"<<endl;
+                            cin >> qinvest;
+                            cout << "duration (short=0, mid=1, long=2)" << endl;
                             int dur;
-                            cin>>dur;
-                            if (dur==0 || dur==1 || dur==2)
+                            cin >> dur;
+                            if (dur == 0 || dur == 1 || dur == 2)
                             {
-                                cout<<"quanto vuoi che sia il rischio (basso=0, medio=1, alto=2)"<<endl;
+                                cout << "risk (low=0, mid1, high=2)" << endl;
                                 int ris;
-                                cin>>ris;
-                                if (ris==0 || ris==1 || ris==2)
+                                cin >> ris;
+                                if (ris == 0 || ris == 1 || ris == 2)
                                 {
                                     for (int i = 0; i < Generali.getAccountList().size(); i++)
                                     {
-                                        if (Generali.getAccountList().at(i).getPersonalCodeBank()==u1.getPersonalCodeUser())
+                                        if (Generali.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                         {
-                                            investment invest(qinvest,dur,ris);
+                                            investment invest(qinvest, dur, ris);
                                             Generali.getAccountList().at(i).createInvesmentList(invest);
                                         }
                                     }
-                                }else{
-                                    cout<<"rischio errato "<<endl;
+                                }
+                                else
+                                {
+                                    cout << "wrong type of risk " << endl;
                                     return 0;
                                 }
-                            }else{
-                                cout<<"duruta errata "<<endl;
+                            }
+                            else
+                            {
+                                cout << "wrong type of duration " << endl;
                                 return 0;
                             }
+                            cout << "************************************" << endl;
+                            break;
+                        case 6:
+                            cout << "investment status:" << endl;
+                            for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
+                            {
+                                if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
+                                {
+                                    SanPaolo.getAccountList().at(i).printInvestmentStatus();
+                                }
+                            }
+                            cout << "************************************" << endl;
                             break;
                         default:
                             break;
                         }
-                        cout<<"vuoi eseguire un' altra operazione?"<<endl;
-                        cout<<"ecco una lista delle possibili operzioni"<<endl;
-                        cout<<"- deposito (codice 0)"<<endl;
-                        cout<<"- prelievo (codice 1)"<<endl;
-                        cout<<"- guardare il tuo portafoglio (codice 2)"<<endl;
-                        cout<<"- guardare il tuo conto in banca (codice 3)"<<endl;
-                        cout<<"- fare un viaggio nel tempo (codice 4)"<<endl;
-                        cout<<"- creare un investimento (codice 5)"<<endl;
-                        cout<<"(y/n)"<<endl;
-                        cin>>answ;
+                        cout << "now you can do these operations" << endl;
+                        cout << "- deposit (code 0)" << endl;
+                        cout << "- withdraw (code 1)" << endl;
+                        cout << "- look wallet (code 2)" << endl;
+                        cout << "- look your personal balance (code 3)" << endl;
+                        cout << "- do a time-travel (code 4)" << endl;
+                        cout << "- create an investment (codice 5)" << endl;
+                        cout << "- look your investment list (code 6)" << endl;
+                        cout << "do you want execute another operation?(y/n)" << endl;
+                        cin >> answ;
                     }
-                }else{
-                    cout<<"ci sono stati problemi"<<endl;
+                }
+                else
+                {
+                    cout << "problems" << endl;
                     return 0;
                 }
-            }else{
-                cout<<"in questa banca non e' presente questo account"<<endl;
+            }
+            else
+            {
+                cout << "thsere is not this account on this bank" << endl;
                 return 0;
             }
-            
-        }
-           
-    }else{
-        while (checkBank!=1 && checkBank!=0)
-        {
-            cout<<"errore, banca non trovata riprovare"<<endl;
-            cout<<"in quale banca vuoi operarare?(San Paolo = 0 | Generali = 1)"<<endl;
-            cin>>checkBank;
         }
     }
-    
-    
+    else
+    {
+        cout << "bank not fount" << endl;
+    }
 
     return 0;
 }
