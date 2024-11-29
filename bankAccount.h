@@ -21,7 +21,7 @@ using namespace std;
         void createInvesmentList(investment i);
         string getPersonalCodeBank();
         void setPersonalBalance(double z);
-        vector<investment> getInvestmentList();
+        vector<investment>& getInvestmentList();
         double getPersonalBalance();
         void setCheckForInvestmentList();
         ~bankAccount(){};

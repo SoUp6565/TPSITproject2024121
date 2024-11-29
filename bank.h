@@ -19,7 +19,7 @@ using namespace std;
         void createAccountList(bankAccount o);
         bool checkPersonalCode(user u);
         vector<bankAccount>& getAccountList();
-        void timeTravel(user u);
+        void timeTravel(user& u);
         ~bank(){};
     };
     

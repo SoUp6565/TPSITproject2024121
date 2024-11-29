@@ -19,7 +19,9 @@ double bankAccount::getPersonalBalance(){
 }
 
 void bankAccount::createInvesmentList(investment i){
+    this->setCheckForInvestmentList();
     if(this->checkForInvestmentList==true){
+        personalBalance-=i.getQInvest();
         investmentList.push_back(i);
     }else{
         cout<<"you can' t invest, your personal balance is lower or equal at 0"<<endl;
@@ -27,7 +29,7 @@ void bankAccount::createInvesmentList(investment i){
     }
 }
 
-vector<investment> bankAccount::getInvestmentList(){
+vector<investment>& bankAccount::getInvestmentList(){
     return investmentList;
 }
 

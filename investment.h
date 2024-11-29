@@ -21,6 +21,7 @@ public:
     double payment();
     bool getIsFinish();
     void setIsFinish();
+    double getQInvest();
     ~investment(){};
 }; 
 #endif

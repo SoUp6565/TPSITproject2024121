@@ -83,3 +83,7 @@ bool investment::getIsFinish(){
 void investment::setIsFinish(){
     isFinish=false;
 }
+
+double investment::getQInvest(){
+    return qInvest;
+}

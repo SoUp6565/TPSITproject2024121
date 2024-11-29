@@ -23,7 +23,7 @@ vector<bankAccount>& bank::getAccountList(){
     return accountList;
 }
 
-void bank::timeTravel(user u){
+void bank::timeTravel(user& u){
     cout<<"day: "<<day;
     cout<<"do you want to do a timetravel(y o n). Every timetravel is 30 days long"<<endl;
     char answer;
@@ -40,9 +40,9 @@ void bank::timeTravel(user u){
                     if (accountList.at(i).getInvestmentList().at(c).getLimit()==0 && accountList.at(i).getInvestmentList().at(c).getIsFinish()==true)
                     {
                         accountList.at(i).setPersonalBalance(accountList.at(i).getInvestmentList().at(c).payment());
-                        accountList.at(i).getInvestmentList().at(c).setLimit();
                         accountList.at(i).getInvestmentList().at(c).setIsFinish();
                     }
+                    accountList.at(i).getInvestmentList().at(c).setLimit();
                 }
             }
         }
