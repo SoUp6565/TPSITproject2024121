@@ -58,7 +58,7 @@ void bankAccount::setCheckForInvestmentList(investment i)
 void bankAccount::printInvestmentStatus()
 {
     int counter{1};
-    for (int i = 0; i < getInvestmentList().size(); i++)
+    for (size_t i = 0; i < getInvestmentList().size(); i++)
     {
         cout << "***********************" << endl;
         cout << counter << endl;

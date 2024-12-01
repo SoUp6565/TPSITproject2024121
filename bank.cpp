@@ -40,7 +40,7 @@ void bank::timeTravel(user &u)
             u.setPersonalWallet(100.00);
             for (size_t i = 0; i < accountList.size(); i++)
             {
-                for (int c = 0; c < accountList.at(i).getInvestmentList().size(); c++)
+                for (size_t c = 0; c < accountList.at(i).getInvestmentList().size(); c++)
                 {
                     if (accountList.at(i).getInvestmentList().at(c).getLimit() == 0 && accountList.at(i).getInvestmentList().at(c).getIsFinish() == true)
                     {
