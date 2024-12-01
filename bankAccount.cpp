@@ -1,4 +1,3 @@
-using namespace std;
 #include "bankAccount.h"
 
 bankAccount::bankAccount(string pC)
