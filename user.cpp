@@ -1,5 +1,6 @@
 #include "user.h"
 #include "bankAccount.h"
+#include "bank.h"
 
 user::user(string pcu)
 {
