@@ -92,7 +92,7 @@ int main()
                                 cin >> ris;
                                 if (ris == 0 || ris == 1 || ris == 2)
                                 {
-                                    for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
+                                    for (size_t i = 0; i < SanPaolo.getAccountList().size(); i++)
                                     {
                                         if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                         {
@@ -116,7 +116,7 @@ int main()
                             break;
                         case 6:
                             cout << "investment status:" << endl;
-                            for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
+                            for (size_t i = 0; i < SanPaolo.getAccountList().size(); i++)
                             {
                                 if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                 {
@@ -216,7 +216,7 @@ int main()
                                 cin >> ris;
                                 if (ris == 0 || ris == 1 || ris == 2)
                                 {
-                                    for (int i = 0; i < Generali.getAccountList().size(); i++)
+                                    for (size_t i = 0; i < Generali.getAccountList().size(); i++)
                                     {
                                         if (Generali.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                         {
@@ -240,7 +240,7 @@ int main()
                             break;
                         case 6:
                             cout << "investment status:" << endl;
-                            for (int i = 0; i < SanPaolo.getAccountList().size(); i++)
+                            for (size_t i = 0; i < SanPaolo.getAccountList().size(); i++)
                             {
                                 if (SanPaolo.getAccountList().at(i).getPersonalCodeBank() == u1.getPersonalCodeUser())
                                 {

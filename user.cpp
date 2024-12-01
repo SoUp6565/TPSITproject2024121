@@ -26,7 +26,7 @@ void user::deposit(bank &b)
         }
         else
         {
-            for (int i = 0; i < b.getAccountList().size(); i++)
+            for (size_t i = 0; i < b.getAccountList().size(); i++)
             {
                 if (b.getAccountList().at(i).getPersonalCodeBank() == personalCodeUser)
                 {
@@ -42,7 +42,7 @@ void user::withdraw(bank &b)
 {
     if (b.checkPersonalCode(*this))
     {
-        for (int i = 0; i < b.getAccountList().size(); i++)
+        for (size_t i = 0; i < b.getAccountList().size(); i++)
         {
             if (b.getAccountList().at(i).getPersonalCodeBank() == personalCodeUser)
             {
@@ -52,7 +52,7 @@ void user::withdraw(bank &b)
         cout << "how much money do you want to withdraw?" << endl;
         double money;
         cin >> money;
-        for (int i = 0; i < b.getAccountList().size(); i++)
+        for (size_t i = 0; i < b.getAccountList().size(); i++)
         {
             if (b.getAccountList().at(i).getPersonalCodeBank() == personalCodeUser)
             {
@@ -81,7 +81,7 @@ void user::lookPersonalBalance(bank b)
 {
     if (b.checkPersonalCode(*this))
     {
-        for (int i = 0; i < b.getAccountList().size(); i++)
+        for (size_t i = 0; i < b.getAccountList().size(); i++)
         {
             if (b.getAccountList().at(i).getPersonalCodeBank() == personalCodeUser)
             {

@@ -12,7 +12,7 @@ void bank::createAccountList(bankAccount o)
 
 bool bank::checkPersonalCode(user u)
 {
-    for (int i = 0; i < accountList.size(); i++)
+    for (size_t i = 0; i < accountList.size(); i++)
     {
         if (accountList.at(i).getPersonalCodeBank() == u.getPersonalCodeUser())
         {
@@ -38,7 +38,7 @@ void bank::timeTravel(user &u)
         if (this->checkPersonalCode(u))
         {
             u.setPersonalWallet(100.00);
-            for (int i = 0; i < accountList.size(); i++)
+            for (size_t i = 0; i < accountList.size(); i++)
             {
                 for (int c = 0; c < accountList.at(i).getInvestmentList().size(); c++)
                 {
